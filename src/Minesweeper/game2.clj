@@ -1,19 +1,16 @@
 (ns Minesweeper.game2
   (:require [clojure.string :as str]))
-; require -> indicates the dependencies that we will use in the project!
-; clojure.core.async -> library that handles asynchronous programming
 
-; clojure.string -> ;is optimizing and giving an alias "str" to simplify the code.
+; This namespace defines the Minesweeper game in Clojure.
+; It requires the 'clojure.string' library and aliases it as 'str1 for convenience
 
-;let use vectors to create our board -> vec -> 2D arrays
 (defn board-creator
-  "create the minesweeper board"
+  "Create the Minesweeper board."
   [lines columns]
-  (vec (repeat lines (vec (repeat columns :0))))
-  )
+  (vec (repeat lines (vec (repeat columns :0)))))
 
 (defn place-bombs
-  "place bombs randomly on the board"
+  "Place bombs randomly on the board."
   [board bombs]
   (loop [board board bombs bombs]
     (if (zero? bombs)
@@ -24,7 +21,7 @@
                (dec bombs))))))
 
 (defn show-board
-  "render all the board on terminal"
+  "Render the entire Minesweeper board on the terminal."
   [board]
   (let [lines (count board)
         columns (count (first board))]
@@ -32,13 +29,13 @@
     (doseq [line (map vector (range lines) board)]
       (println (format "%2d |" (first line))
                (str/join " | "
-                         (map #(if (= % :bomb) "xx" (if (= % :bomb-exploded) "*" (format "%2s" %))) (second line)))))))
+                         (map #(if (= % :bomb) "xx" (if (= % :bomb-exploded) " *" (format "%2s" %))) (second line)))))))
 
 
 
-;fn -> anonimous function (fn [parameter] body's function)
+;fn -> Anonymous function to count neighboring bombs around a cell.
 (defn counting-neighboring-bombs
-  "checks how many bombs there are around the player's choice"
+  "Check how many bombs there are around the player's choice."
   [board line column]
   (let [lines (count board)
         columns (count (first board))
@@ -55,42 +52,47 @@
          count)))
 
 (defn update-board
-  "Update the board after the player's choice [ line  column ]"
+  "Update the board after the player's choice [line column]."
   [board line column]
   (if (= :0 (get-in board [line column]))
     (update-in board [line column] (constantly (counting-neighboring-bombs board line column)))
     board))
 
 (defn player-move
+  "Function representing a player's move on the board"
   [board line column]
   (if (= :bomb (get-in board [line column]))
     (assoc-in board [line column] :bomb-exploded)
     (update-board board line column)))
 
 (defn lost?
-  "function that verify if player lost the game"
+  "Check if the player lost the game."
   [board]
   (some #(= :bomb-exploded %) (flatten board)))
 
 (defn start-game
-  "responsible for managing the game"
+  "Manage the Minesweeper game."
   []
   (let [lines   5
         columns 5
         bombs   5
         board   (-> (board-creator lines columns)
                     (place-bombs bombs))]
-    (loop [board board]
-      (show-board board)
-      (if (lost? board) (println "Você perdeu!")
-                        (do
-                          (println "Informe a linha: ")
-                          (let [line (read)
-                                column (do
-                                         (println "Informe a coluna: ")
-                                         (read))]
-                            (recur (player-move board line column)))))
-      )
-    ))
+    (println "Começando o jogo!")
+    (let [start-time (System/currentTimeMillis)]
+      (loop [board board]
+        (show-board board)
+        (if (lost? board)
+          (do (println "Você perdeu!")
+              (let [end-time (System/currentTimeMillis)
+                    elapsed-time (/ (- end-time start-time) 1000)]
+                (println (str "Tempo decorrido: " (int elapsed-time) " segundos."))))
+          (do
+            (println "Informe a linha: ")
+            (let [line (read)
+                  column (do
+                           (println "Informe a coluna: ")
+                           (read))]
+              (recur (player-move board line column)))))))))
 
 (start-game)
