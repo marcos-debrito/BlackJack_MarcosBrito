@@ -5,16 +5,19 @@
 
 ;Declarando as variáveis normalmente
 ; var name = "Marcos"
-(def name "Marcos")
-(def age "21")
-(def numbers [1 3 6 8])
-(println numbers)
+;(def name "Marcos")
+;(def age "21")
+;(def numbers [1 3 6 8])
+;(println numbers)
 
 ;definindo uma funcao de saudacao -> defn
-(defn saudacao
-  "Saudacao iniciante em Clojure "
-  [name]
-  (str "Bem vindo " name))
+;
+;
+;(defn saudacao
+  ;  "Saudacao iniciante em Clojure "
+  ;[name]
+  ;(str "Bem vindo " name)
+;  )
 
 
-(println (saudacao name))
+;(println (saudacao name))

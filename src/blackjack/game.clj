@@ -35,7 +35,6 @@
 ;(points-cards [1 8 5])     14
 
 ; player's map
-;
 ; (def player
 ;  {
 ;   :player "Marcos Brito"
