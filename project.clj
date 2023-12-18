@@ -7,5 +7,5 @@
                  [org.clojars.cesaralcancio/card-ascii-art "0.4.0"]
                  [org.clojure/clojure "1.10.1"]
                  [org.clojure/core.async "1.2.603"]]
-  :main ^:skip-aot Minesweeper.game
+  :main ^:skip-aot Minesweeper.game2
   :repl-options {:init-ns blackjack.core})
