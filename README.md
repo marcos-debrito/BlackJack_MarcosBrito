@@ -1,5 +1,7 @@
 Desafio CSDbr 
 
+Link dos slides: https://www.canva.com/design/DAF3ch1u4Vs/WYOuVwHRgqwt66VqVxagmg/edit
+
 ## Introdução
 
 Inicialmente este mini projeto tinha como objetivo desenvolver um jogo de BlackJack em Clojure, que foi minha primeira experiência com a linguagem.
