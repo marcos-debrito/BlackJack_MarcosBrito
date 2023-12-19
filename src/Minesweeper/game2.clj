@@ -73,26 +73,29 @@
 (defn start-game
   "Manage the Minesweeper game."
   []
-  (let [lines   5
-        columns 5
-        bombs   5
-        board   (-> (board-creator lines columns)
-                    (place-bombs bombs))]
-    (println "Começando o jogo!")
-    (let [start-time (System/currentTimeMillis)]
-      (loop [board board]
-        (show-board board)
-        (if (lost? board)
-          (do (println "Você perdeu!")
-              (let [end-time (System/currentTimeMillis)
-                    elapsed-time (/ (- end-time start-time) 1000)]
-                (println (str "Tempo decorrido: " (int elapsed-time) " segundos."))))
-          (do
-            (println "Informe a linha: ")
-            (let [line (read)
-                  column (do
-                           (println "Informe a coluna: ")
-                           (read))]
-              (recur (player-move board line column)))))))))
+  (println "Bem-vindo ao Campo Minado!")
+  (println "Informe o número de linhas: ")
+  (let [lines (read)]
+    (println "Informe o número de colunas: ")
+    (let [columns (read)]
+      (println "Informe o número de bombas: ")
+      (let [bombs (read)
+            board (-> (board-creator lines columns)
+                      (place-bombs bombs))]
+        (println "Comecando o jogo!")
+        (let [start-time (System/currentTimeMillis)]
+          (loop [board board]
+            (show-board board)
+            (if (lost? board)
+              (do (println "Voce perdeu!")
+                  (let [end-time (System/currentTimeMillis)
+                        elapsed-time (/ (- end-time start-time) 1000)]
+                    (println (str "Tempo decorrido: " (int elapsed-time) " segundos."))))
+              (do
+                (println "Informe a linha: ")
+                (let [line (read)]
+                  (println "Informe a coluna: ")
+                  (let [column (read)]
+                    (recur (player-move board line column))))))))))))
 
 (start-game)
