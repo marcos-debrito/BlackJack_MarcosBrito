@@ -8,7 +8,7 @@ Inicialmente este mini projeto tinha como objetivo desenvolver um jogo de BlackJ
 
 Como eu ainda não havia nenhuma experiência com Clojure, decidi começar pesquisando a melhor forma de estruturar um projeto, e como começá-lo. Então baixei uma nova IDEA chamada IntelliJ e também utilizei os recursos recomendados pela comunidade como por exemplo: Leiningen para inicializaçãodo projeto.
 
-- **Devido o pouco tempo disponível para aprender algo do zero, decidi utilizar de ferramentas como o youtube para otimizar o aprendizado. Com isso, encontrei uma playlist desenvolvendo o jogo BlackJack completo em Clojure. Assim, aprendi a desenvolver um projeto de terminal.**
+- **Devido o pouco tempo disponível para aprender algo do zero, além de ler a documentação oficial do Clojure, decidi utilizar de ferramentas como o youtube para otimizar o aprendizado. Com isso, encontrei uma playlist desenvolvendo o jogo BlackJack completo em Clojure. Assim, aprendi a desenvolver um projeto de terminal.**
 
 referência: https://www.youtube.com/watch?v=f_I89ICI3x8&list=PLcjDvROHY58MlqcAU7d0fYhAJQ-p-dMp6
 
