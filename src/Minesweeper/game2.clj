@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]))
 
 ; This namespace defines the Minesweeper game in Clojure.
-; It requires the 'clojure.string' library and aliases it as 'str1 for convenience
+; It requires the 'clojure.string' library and aliases it as 'str' for convenience
 
 (defn board-creator
   "Create the Minesweeper board."
